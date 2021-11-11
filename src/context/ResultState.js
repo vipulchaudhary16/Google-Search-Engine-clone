@@ -6,11 +6,11 @@ const baseUrl = "https://google-search1.p.rapidapi.com/google-search";
 const ResultState = (props) => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("vipul%chaudhary");
 
-  const getResults = async (url) => {
+  const getResults = async (input) => {
     setLoading(true);
-    const res = await fetch("https://google-search1.p.rapidapi.com/google-search?hl=en&q=Avengers%2BEndgame&gl=us", {
+    const res = await fetch(`https://google-search1.p.rapidapi.com/google-search?hl=en&q=${input}&gl=us`, {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "google-search1.p.rapidapi.com",
@@ -18,7 +18,7 @@ const ResultState = (props) => {
       }
     })
     const data = await res.json();
-    console.log(data.organic);
+    console.log(results)
     setResults(data);
     setLoading(false);
   };
